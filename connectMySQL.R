@@ -1,0 +1,1 @@
+# This code is a test to make sure you can connect R the MySQL server
