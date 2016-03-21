@@ -49,7 +49,7 @@ LOAD DATA LOCAL INFILE '/Users/agaldi/Downloads/cubedata/college_batting_2002_20
     INTO TABLE college_batting_2002_2015
     FIELDS
         TERMINATED BY ','
-        ENCLOSED BY ''
+        ENCLOSED BY '"'
     LINES
         TERMINATED BY '\r\n'
     IGNORE 1 LINES;
@@ -106,7 +106,7 @@ LOAD DATA LOCAL INFILE '/Users/agaldi/Downloads/cubedata/college_batting_1965_20
     INTO TABLE college_batting_1965_2001
     FIELDS
         TERMINATED BY ','
-        ENCLOSED BY ''
+        ENCLOSED BY '"'
     LINES
         TERMINATED BY '\r\n'
     IGNORE 1 LINES;
@@ -165,7 +165,7 @@ LOAD DATA LOCAL INFILE '/Users/agaldi/Downloads/cubedata/college_pitching_2002_2
     INTO TABLE college_pitching_2002_2015
     FIELDS
         TERMINATED BY ','
-        ENCLOSED BY ''
+        ENCLOSED BY '"'
     LINES
         TERMINATED BY '\r\n'
     IGNORE 1 LINES;
@@ -228,7 +228,7 @@ LOAD DATA LOCAL INFILE '/Users/agaldi/Downloads/cubedata/college_pitching_1965_2
     INTO TABLE college_pitching_1965_2001
     FIELDS
         TERMINATED BY ','
-        ENCLOSED BY ''
+        ENCLOSED BY '"'
     LINES
         TERMINATED BY '\r\n'
     IGNORE 1 LINES;
