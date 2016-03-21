@@ -277,7 +277,64 @@ LOAD DATA LOCAL INFILE '/Users/agaldi/Downloads/cubedata/draft_register_input.cs
     INTO TABLE draft_register
     FIELDS
         TERMINATED BY ','
-        ENCLOSED BY ''
+        ENCLOSED BY '"'
+    LINES
+        TERMINATED BY '\r\n'
+    IGNORE 1 LINES;
+
+# Create mlb_batting schema
+CREATE TABLE mlb_batting (
+  playerid mediumint(8) UNSIGNED NOT NULL,
+  mlbid mediumint(8) default NULL,
+  lastName varchar(255),
+  firstName varchar(255),
+  HT varchar(255),
+  WT smallint(8) UNSIGNED,
+  Bats varchar(10),
+  Throws varchar(10),
+  posit varchar(10),
+  borndate varchar(10),
+  place varchar(255),
+  regionID varchar(2),
+  year year(4) UNSIGNED,
+  teamName varchar(255),
+  Age smallint(8) UNSIGNED,
+  G smallint(8) UNSIGNED,
+  AB smallint(8) UNSIGNED,
+  R smallint(8) UNSIGNED,
+  H smallint(8) UNSIGNED,
+  Dbl smallint(8) UNSIGNED,
+  Tpl smallint(8) UNSIGNED,
+  HR smallint(8) UNSIGNED,
+  RBI smallint(8) UNSIGNED,
+  SB smallint(8) UNSIGNED,
+  CS smallint(8) UNSIGNED,
+  BB smallint(8) UNSIGNED,
+  IBB smallint(8) UNSIGNED,
+  SO smallint(8) UNSIGNED,
+  SH smallint(8) UNSIGNED,
+  SF smallint(8) UNSIGNED,
+  HBP smallint(8) UNSIGNED,
+  GDP smallint(8) UNSIGNED,
+  Bavg float,
+  Slg float,
+  obp float,
+  OPS mediumint(8) UNSIGNED,
+  PRIMARY KEY(playerid, year, teamName)
+);
+
+# Load data into mlb_batting table
+# Some preprocessing steps
+## 1. Find and replace ,, with ,NULL, in .csv
+##      sed 's/,,/,NULL,/g' < mlb_batting.csv > mlb_batting_input.csv
+##    Repeat this command as needed:
+##      sed -i '' 's/,,/,NULL,/g' mlb_batting_input.csv
+##      Find and Replace rows that end with , with ,NULL 
+LOAD DATA LOCAL INFILE '/Users/agaldi/Downloads/cubedata/mlb_batting_input.csv'
+    INTO TABLE mlb_batting
+    FIELDS
+        TERMINATED BY ','
+        ENCLOSED BY '"'
     LINES
         TERMINATED BY '\r\n'
     IGNORE 1 LINES;
